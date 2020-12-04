@@ -3,7 +3,7 @@ package db
 import (
 	"fmt"
 
-	"github.com/cheggaaa/pb"
+	"github.com/cheggaaa/pb/v3"
 	"github.com/inconshreveable/log15"
 	"github.com/jinzhu/gorm"
 	sqlite3 "github.com/mattn/go-sqlite3"
