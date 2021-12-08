@@ -42,7 +42,7 @@ func (r *RDBDriver) Name() string {
 }
 
 // OpenDB opens Database
-func (r *RDBDriver) OpenDB(dbType, dbPath string, debugSQL bool, option Option) (locked bool, err error) {
+func (r *RDBDriver) OpenDB(dbType, dbPath string, debugSQL bool, _ Option) (locked bool, err error) {
 	gormConfig := gorm.Config{
 		DisableForeignKeyConstraintWhenMigrating: true,
 		Logger: logger.New(
