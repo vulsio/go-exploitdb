@@ -1,6 +1,8 @@
 package commands
 
 import (
+	"errors"
+
 	"github.com/inconshreveable/log15"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -40,7 +42,7 @@ func executeServer(_ *cobra.Command, _ []string) (err error) {
 
 	driver, err := db.NewDB(viper.GetString("dbtype"), viper.GetString("dbpath"), viper.GetBool("debug-sql"), db.Option{})
 	if err != nil {
-		if xerrors.Is(err, db.ErrDBLocked) {
+		if errors.Is(err, db.ErrDBLocked) {
 			return xerrors.Errorf("Failed to open DB. Close DB connection before fetching. err: %w", err)
 		}
 		return xerrors.Errorf("Failed to open DB. err: %w", err)
